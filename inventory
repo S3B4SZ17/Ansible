@@ -1,3 +1,24 @@
+#Every IPs
+[spl_all]
+# ansible_user=
+# ansible_connection=ssh
+
+#search heads IPs
+[sh]
+# ansible_user=
+# ansible_connection=ssh
+
+#indexers IPs
+[idx]
+# ansible_user=
+# ansible_connection=ssh
+
+#indexer cluster master
+[idx_master]
+# ansible_user=
+# ansible_connection=ssh
+
+
 [my_servers]
 172.16.16.4 ansible_user=sebastianzumbado
 172.16.16.5 ansible_user=sebas

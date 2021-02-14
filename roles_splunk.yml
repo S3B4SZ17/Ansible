@@ -1,0 +1,20 @@
+---
+- name: Basic Role => Ip tables
+  iptables: 
+    flush: yes
+
+#Task file for basic
+- name: Basic Role => Copy Splunk Binary
+  copy:
+    src: '{{ binary }}'
+    dest: /tmp
+    owner: root
+    group: root
+
+#Binary installation
+- name: Basic Role => Install Splunk
+  yum:
+    name: '{{ binarydir }}/{{ binary }}'
+    state: present
+  notify:
+    - Basic Role (Handler) => Starting Splunk for the First Time

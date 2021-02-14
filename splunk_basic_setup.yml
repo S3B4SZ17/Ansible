@@ -1,0 +1,50 @@
+---
+#installs the basic on every OS
+
+- hosts: spl_all
+  become: yes
+  become_user: yes
+  roles:
+    - basic
+
+#Configure master index cluster
+- hosts: master_idx
+  become: yes
+  become_user: splunk
+  roles:
+    - master_idx_cluster
+
+#Configure peers index cluster
+- hosts: idx
+  become: yes
+  become_user: splunk
+  roles:
+    - peers_idx_cluster
+
+#Configure Deployer
+- hosts: deployer
+  become: yes
+  become_user: splunk
+  roles:
+    - deployer
+ 
+#Search Cluster
+- hosts: sh
+  become: yes
+  become_user: splunk
+  roles:
+    - sh_cluster
+
+#Bring the search head cluster captain
+- hosts: captain
+  become: yes
+  become_user: splunk
+  roles:
+    - captain
+
+#Bond Search Head Cluster and Idx Cluster
+- hosts: sh
+  become: yes
+  become_user: splunk
+  roles:
+    - bondshidx
